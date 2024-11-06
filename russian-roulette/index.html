@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Русская Рулетка</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Главное меню -->
+        <div id="menu" class="menu-screen">
+            <h1>РУССКАЯ РУЛЕТКА</h1>
+            <div class="shotgun-title">
+                <div class="revolver">🔫</div>
+            </div>
+            <button onclick="startGame()" class="start-btn">ИГРАТЬ</button>
+        </div>
+
+        <!-- Игровой экран -->
+        <div id="game" class="game-screen" style="display: none;">
+            <!-- Секция бота -->
+            <div class="bot-section">
+                <div id="botFace" class="bot-face">😐</div>
+                <div id="botHealth" class="health-bar"></div>
+            </div>
+            
+            <!-- Центральная секция -->
+            <div class="game-center">
+                <div id="message" class="message"></div>
+                <div class="revolver" onclick="shoot()">🔫</div>
+            </div>
+            
+            <!-- Секция игрока -->
+            <div class="player-section">
+                <div id="playerHealth" class="health-bar"></div>
+                <h3>ВЫ</h3>
+            </div>
+        </div>
+
+        <!-- Экран победы -->
+        <div id="victory" class="victory-screen" style="display: none;">
+            <h1>ПОБЕДА!</h1>
+            <div id="money" class="money-rain"></div>
+            <button onclick="location.reload()" class="restart-btn">ИГРАТЬ СНОВА</button>
+        </div>
+
+        <!-- Экран проигрыша -->
+        <div id="gameOver" class="game-over-screen" style="display: none;">
+            <h1>ИГРА ОКОНЧЕНА</h1>
+            <div id="botFaceGameOver" class="bot-face-large">😈</div>
+            <button onclick="location.reload()" class="restart-btn">ПОПРОБОВАТЬ СНОВА</button>
+        </div>
+
+        <!-- Переход ко второй фазе -->
+        <div id="phase2Transition" class="phase2-transition" style="display: none;">
+            <div class="transition-content">
+                <h2>ФАЗА 2</h2>
+                <div id="botFaceTransition" class="bot-face-large">🤬</div>
+                <p>БОТ РАЗОЗЛИЛСЯ!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Медкит (будет создаваться динамически) -->
+    <template id="medkitTemplate">
+        <div class="medkit">🧰</div>
+    </template>
+
+    <!-- Звуковые эффекты -->
+    <audio id="shotSound" preload="auto">
+        <source src="sounds/shot.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="emptySound" preload="auto">
+        <source src="sounds/empty.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="phase2Sound" preload="auto">
+        <source src="sounds/phase2.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="victorySound" preload="auto">
+        <source src="sounds/victory.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="medkitSound" preload="auto">
+        <source src="sounds/medkit.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Скрипты -->
+    <script src="game.js"></script>
+</body>
+</html>
